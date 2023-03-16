@@ -33,7 +33,6 @@ def parse_args():
     parser.add_argument('--learning_rate', default=0.001, type=float, help='Initial learning rate (for SGD it is multiplied by 100) [default: 0.001]')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='Decay rate [default: 1e-4]')
     parser.add_argument('--optimizer', type=str, default='SGD', help='Pptimizer for training [default: SGD]')
-    parser.add_argument('--gpu', type=str, default='0', help='Specify gpu device [default: 0]')
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
     parser.add_argument('--log_dir', type=str, default='vn_dgcnn/aligned', help='Experiment root [default: vn_dgcnn/aligned]')
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
@@ -81,9 +80,6 @@ def main(args):
     def log_string(str):
         logger.info(str)
         print(str)
-
-    '''HYPER PARAMETER'''
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     '''CREATE DIR'''
     timestr = str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M'))

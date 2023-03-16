@@ -25,7 +25,6 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=16, help='Batch size in training [default: 32]')
     parser.add_argument('--model', default='vn_dgcnn_cls', help='Model name [default: vn_dgcnn_cls]',
                         choices = ['pointnet_cls', 'vn_pointnet_cls', 'dgcnn_cls', 'vn_dgcnn_cls'])
-    parser.add_argument('--gpu', type=str, default='0', help='Specify gpu device [default: 0]')
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
     parser.add_argument('--log_dir', type=str, default='vn_dgcnn/aligned', help='Experiment root [default: vn_dgcnn/aligned]')
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
@@ -75,9 +74,6 @@ def main(args):
     def log_string(str):
         logger.info(str)
         print(str)
-
-    '''HYPER PARAMETER'''
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     '''CREATE DIR'''
     experiment_dir = 'log/cls/' + args.log_dir

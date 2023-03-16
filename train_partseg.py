@@ -46,7 +46,6 @@ def parse_args():
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='Weight decay [default: 1e-4]')
     parser.add_argument('--step_size', type=int, default=20, help='Decay step for lr decay [default: every 20 epochs]')
     parser.add_argument('--lr_decay', type=float, default=0.5, help='Decay rate for lr decay [default: 0.5]')
-    parser.add_argument('--gpu', type=str, default='0', help='GPU to use [default: GPU 0]')
     parser.add_argument('--optimizer', type=str, default='SGD', help='Adam or SGD [default: SGD]')
     parser.add_argument('--log_dir', type=str, default='vn_dgcnn/aligned', help='Experiment root [default: vn_dgcnn/aligned]')
     parser.add_argument('--npoint', type=int, default=2048, help='Point Number [default: 2048]')
@@ -62,9 +61,6 @@ def main(args):
     def log_string(str):
         logger.info(str)
         print(str)
-
-    '''HYPER PARAMETER'''
-    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     '''CREATE DIR'''
     timestr = str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M'))
